@@ -1,0 +1,3 @@
+id,image_front,image_rear,image_side,image_real,name_brand,model_variant,configuration,year,body_type,price,engine,color_body,color_interior,height,width,range_miles,drive_train
+1,\photo\Audi-E-tron-PNG.png,\photo\Audi-E-tron-PNG.png,\photo\Audi-E-tron-PNG.png,\photo\Audi-E-tron-PNG.png,Audi,E-tron,Quattro,2022,SUV,80000.00,Electric,Blue,Black,60,75,250,AWD
+2,\photo\Volkswagen-ID5-GTX-2022-front.png,\photo\Volkswagen-ID5-GTX-2022-rear.png,\photo\Volkswagen-ID5-GTX-2022-side.png,\photo\Volkswagen-ID5-GTX-2022-rear.png,Volkswagen,ID.5,GTX,2020,SUV,20000.00,Electric,Red,Beige,65,70,200,FWD

@@ -1,0 +1,173 @@
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:400,700,800';
+body {
+        font-family: 'Open Sans', sans-serif;
+        font-weight: bold;
+        margin: 0;
+        padding: 0;
+        height: 1024px;
+        background: #FFF;
+        overflow-x: hidden; 
+        overflow-y: scroll; 
+    }
+
+    .top-platform {
+        width: 100%;
+        height: 60px; 
+        background: #fff;
+        box-shadow: 1px -5px 15px black;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        z-index: 2;
+    }
+    
+    .top-buttons {
+        color: hsl(0, 0%, 0%);
+        text-decoration: none;
+        font-size: 16px;
+        display: flex;
+        align-items: center; 
+    }
+    
+    .top-buttons a {
+        margin: 0 10px; 
+    }
+    
+    .top-buttons a:hover {
+        background-color: rgba(0, 0, 0, 0.897);
+        color: black;
+        border-radius: 8px; 
+    }
+    
+    .welcome-section {
+        position: relative;
+        height: 70%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-end;
+        padding: 0;
+    }
+
+    .welcome-text {
+        max-width: 70%;
+        font-size: 24px;
+        color: #333;
+        margin-left: 10%;
+    }
+
+    .divider-line {
+        position: absolute;
+        bottom: 25%;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #555;
+    }
+
+    .platform {
+        width: 100%;
+        height: 100px;
+        background-color: #333;
+        position: absolute;
+        bottom: 23%; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2;
+    }
+
+
+    .welcome-text-on-platform {
+        font-size: 24px;
+        color: #FFF;
+    }
+
+    .car-image-right {
+        width: 546px; 
+        height: 227px;
+        flex-shrink: 0;
+        background: url('/photo/bmw.png') center / cover no-repeat;
+        position: absolute;
+        bottom: 25%;
+        right: 10%; 
+        z-index: 2;
+    }
+    .car-image-left {
+        width: 546px; 
+        height: 250px;
+        flex-shrink: 0;
+        background: url('/photo/Volkswagen-ID-PNG.png') center / cover no-repeat;
+        position: absolute;
+        bottom: 25%;
+        left: 10%;
+        z-index: 2;
+    }
+    .logos-section {
+        position: absolute;
+        top: 35%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 0;
+    }
+
+    .logo {
+        width: 550px; 
+        height: 500px;
+        margin: 50% 50px; 
+    }
+    .info-section {
+        background-color: #f2f2f2;
+        padding: 20px;
+        text-align: center;
+        width: 100%;
+        box-sizing: border-box;
+        position: relative;
+        bottom: 0;
+    }
+
+
+
+    #main1{
+        margin: 0;
+        margin-top: 10px;
+    }
+    section {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+    }
+    
+    .hero-section img {
+        width: 100%;
+        height: 90vh; 
+        object-fit: cover; 
+    }
+    
+    .hero-text {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        color: #000000ee;
+        max-width: 50%; 
+    }
+    
+    .hero-text h1 {
+        font-size: 2em;
+        margin-bottom: 10px;
+    }
+    
+    .hero-text p {
+        font-size: 1.2em;
+    }
+
+    .contact-info {
+        bottom: 0;
+        right: 0;
+        padding: 10px;
+    }

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Деталі автомобіля</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <link rel="stylesheet" href="\CSS\details-styles.css">
+
+</head>
+
+<body>
+    <header>
+        <div class="container">
+                <div class="brand">
+                </div>
+                <h3 id="main_link"><a href="main_page.html">VAG CENTRE LVIV</a></h3>
+        </div>
+    </header>
+    <div class="details-container">
+        <div class="return-link">
+            <a href="catalog.html">Повернутися до каталогу</a>
+        </div>
+        
+        <div class="car-photos" id="imageContainer">
+            <div class="car-images" id="dynamicCarImages"></div>
+
+            <div class="car-details-container">
+            <div class="car-details-left">
+                <table>
+                    <tr>
+                        <td>Марка</td>
+                        <td id="brand"></td>
+                    </tr>
+                    <tr>
+                        <td>Модель</td>
+                        <td id="model"></td>
+                    </tr>
+                    <tr>
+                        <td>Конфігурація</td>
+                        <td id="configuration"></td>
+                    </tr>
+                    <tr>
+                        <td>Рік</td>
+                        <td id="year"></td>
+                    </tr>
+                    <tr>
+                        <td>Тип кузова</td>
+                        <td id="body"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="car-details-right">
+                <table>
+                    <tr>
+                        <td>Колір кузова</td>
+                        <td id="color-body"></td>
+                    </tr>
+                    <tr>
+                        <td>Колір салону</td>
+                        <td id="color-interior"></td>
+                    </tr>
+                    <tr>
+                        <td>Двигун</td>
+                        <td id="engine"></td>
+                    </tr>
+                    <tr>
+                        <td>Запас ходу</td>
+                        <td id="range-miles"></td>
+                    </tr>
+                    <tr>
+                        <td>Висота</td>
+                        <td id="height"></td>
+                    </tr>
+                    <tr>
+                        <td>Ширина</td>
+                        <td id="width"></td>
+                    </tr>
+                </table>
+            </div>
+            </div>
+        </div>
+        
+        
+    </div>
+
+    <div class="price-contact">
+        <p id="price"></p>
+        <p id="catalog_numb"></p>
+        <button id="contactButton">Зв'язатися з менеджером</button>
+        <h5>VAG Centre Lviv</h5>
+        <h5>Місто: .... </h5>
+        <h5>Вулиця: .... </h5>
+    </div>
+
+    <script src="\JS\details.js"></script>
+        <div class="modal" id="modal-1">
+            <div class="modal__content">
+            <button class="modal__close-button"><img src="\SVG\close.svg" width="12" alt=""></button>
+            <h2 class="modal__title">Ваші контактні дані</h2>
+            <form id="clientForm">
+                <label for="clientName">Ім'я:</label>
+                <input type="text" id="clientName" name="clientName" required>
+
+                <label for="clientLastName">Прізвище:</label>
+                <input type="text" id="clientLastName" name="clientLastName" required>
+    
+        
+                <label for="clientEmail">Електронна пошта:</label>
+                <input type="email" id="clientEmail" name="clientEmail" required>
+        
+                <label for="clientPhone">Номер телефону:</label>
+                <input type="tel" id="clientPhone" name="clientPhone" required>
+
+                <label for="catalogNumber">Каталожний номер:</label>
+                <input type="number" id="catalogNumber" name="catalogNumber" required>
+        
+                <button type="button" onclick="submitForm()">Надіслати</button>
+            </form>
+            <div class="contact-info">
+                <p>Контактна інформація:</p>
+                <p>телефон VAG CENTRE</p>
+                <p>+380 68 000 0000</p>
+            </div>
+            </div>
+        </div>
+
+</body>
+
+</html>

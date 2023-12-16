@@ -1,24 +1,35 @@
-// Функція для отримання CSV-даних
+/**
+ * Отримує CSV-дані за вказаною URL-адресою.
+ * @param {string} url - URL для отримання CSV-даних.
+ * @returns {Promise<string>} - Об'єкт Promise, який розв'язується з CSV-даними
+ */
 function fetchCSV(url) {
     return fetch(url)
         .then(response => response.text());
 }
 
-// Функція для розбору CSV-даних
+/**
+ * Розбирає CSV-дані і повертає масив об'єктів.
+ * @param {string} csv - Рядок тексту CSV для розбору.
+ * @returns {Array<Object>} - Масив об'єктів, представляючи розібрані CSV-дані.
+ */
 function parseCSVData(csv) {
-    const lines = csv.split('\n');
-    const headers = lines[0].split(',');
+    const lines = csv.split('\n'); // Розділяємо CSV-рядки
+    const headers = lines[0].split(','); // Отримуємо заголовки колонок
 
-    const data = [];
+    const data = []; // Примаємо пустий масив для зберігання об'єктів даних
 
+    // Цикл ітерації по рядках CSV-даних(йдемо з 2 рядка, бо перший це заголовок)
     for (let i = 1; i < lines.length; i++) {
         const cells = lines[i].split(',');
         const entry = {};
 
+        // Заповнюємо об'єкт значеннями, використовуючи заголовки колонок
         for (let j = 0; j < headers.length; j++) {
             entry[headers[j]] = cells[j];
         }
 
+        // Додаємо об'єкт до масиву даних
         data.push(entry);
     }
 
@@ -32,10 +43,13 @@ const carId = urlParams.get('id');
 // URL вашого CSV-файлу
 const csvURL = 'http://localhost:5500/CSV/cardealer.csv';
 
-// Отримання та відображення даних автомобіля
+
+/**
+ * Отримує та відображає дані про автомобіль за його ID.
+ */
 async function fetchData() {
-    const csvData = await fetchCSV(csvURL);
-    const carsData = parseCSVData(csvData);
+    const csvData = await fetchCSV(csvURL); // Отримуємо CSV-даних за допомогою функції fetchCSV
+    const carsData = parseCSVData(csvData); // Розбір CSV-даних у масив об'єктів за допомогою функції parseCSVData
 
     // Знаходимо автомобіль за його ID
     const selectedCar = carsData.find(car => car.id === carId);
@@ -44,6 +58,7 @@ async function fetchData() {
         // Додавання фотографій
         const imageContainer = document.getElementById('dynamicCarImages');
 
+        // Створення і вставка HTML-елементів для фотографій
         const imageFront = document.createElement('div');
         imageFront.innerHTML = `<img src="${selectedCar.image_front}" alt="${selectedCar.name_brand} ${selectedCar.model_variant}" style="width: ${600}; height: ${600};">`;
         imageContainer.appendChild(imageFront);
@@ -80,6 +95,7 @@ async function fetchData() {
     } else {
         console.error('Автомобіль з ID ' + carId + ' не знайдено.');
     }
+    // Ініціалізація слайдера за допомогою бібліотеки Slick
     $(document).ready(function(){
         $('#dynamicCarImages').slick({
             slidesToShow: 1,
@@ -96,48 +112,65 @@ async function fetchData() {
 fetchData().catch(error => console.error('Помилка завантаження CSV:', error));
 
 
-
+/**
+ * Викликається після завантаження DOM. Встановлює обробники подій для кнопки "Зв'язатися з менеджером", закриття модального вікна та відправки форми.
+ */
 document.addEventListener('DOMContentLoaded', () => {
-    let EditProfileButt = document.getElementById('contactButton');
+    // Отримання елементів DOM
+    let ConnectManager = document.getElementById('contactButton');
 
     let modal1 = document.getElementById('modal-1');
 
     let closeButton = modal1.getElementsByClassName('modal__close-button')[0];
 
     let tagBody = document.body;
-    console.log(EditProfileButt);
+    console.log(ConnectManager);
 
-    EditProfileButt.onclick = function (e) {
+    // Встановлення обробника подій для кнопки "ConnectManager"
+    ConnectManager.onclick = function (e) {
         e.preventDefault();
-        modal1.classList.add('modal_active');
-        tagBody.classList.add('hidden');
+        modal1.classList.add('modal_active'); // Активує клас для показу модального вікна
+        tagBody.classList.add('hidden'); // Додає клас для схову тіла сторінки
         }
 
+        // Встановлення обробника подій для кнопки закриття модального вікна
         closeButton.onclick = function (e) {
             e.preventDefault();
-            modal1.classList.remove('modal_active');
-            tagBody.classList.remove('hidden');
+            modal1.classList.remove('modal_active'); // Знімає клас для показу модального вікна
+            tagBody.classList.remove('hidden'); // Видаляє клас для схову тіла сторінки
         }
 
+        // Встановлення обробника подій для закриття модального вікна при кліку поза ним
         modal1.onmousedown = function (e) {
             let target = e.target;
             let modalContent = modal1.getElementsByClassName('modal__content')[0];
+                    // Закриття модального вікна, якщо клік відбувається поза його контентом
             if (e.target.closest('.' + modalContent.className) === null) {
             this.classList.remove('modal_active');
             tagBody.classList.remove('hidden');
             }
         };
 
-                // Обробка форми
+        // Обробка форми
         form.addEventListener('submit', (event) => {
             event.preventDefault();
-            submitForm();
-            closeModal();
+            submitForm(); // Виклик функції для обробки відправки форми
+            closeModal(); // Закриття модального вікна
         });
 })
 
+
+
+/**
+ * Функція для створення або оновлення CSV-файлу з даними клієнта.
+ * @param {string} name - Ім'я клієнта.
+ * @param {string} lastName - Прізвище клієнта.
+ * @param {string} email - Електронна адреса клієнта.
+ * @param {string} phone - Номер телефону клієнта.
+ * @param {string} catalogNumber - Каталожний номер машини.
+ */
 function createOrUpdateCSV(name, lastName, email, phone, catalogNumber) {
-    let csvRow = `${name},${lastName},${email},${phone},${catalogNumber}\n`;
+    let csvRow = `${name},${lastName},${email},${phone},${catalogNumber}\n`; // Створення рядка CSV
 
     // Перевірка, чи існує вже файл
     if (!localStorage.getItem('csvData')) {
@@ -167,6 +200,9 @@ function createOrUpdateCSV(name, lastName, email, phone, catalogNumber) {
     document.body.removeChild(link);
 }
 
+/**
+ * Функція для обробки відправки форми.
+ */
 function submitForm() {
     let name = document.getElementById('clientName').value;
     let lastName = document.getElementById('clientLastName').value;
@@ -174,6 +210,6 @@ function submitForm() {
     let phone = document.getElementById('clientPhone').value;
     let catalogNumber = document.getElementById('catalogNumber').value;
 
-
+    // Виклик функції для створення або оновлення CSV-файлу
     createOrUpdateCSV(name, lastName, email, phone, catalogNumber);
 }
